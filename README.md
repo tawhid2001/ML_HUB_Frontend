@@ -51,5 +51,5 @@ A modern, responsive frontend for the Insurance Premium Prediction tool, built w
 - Mahadi Hasan — ML Trainer and Backend API Developer
 - Tawhid Talal — Frontend Developer and UI/UX Designer
 =======
-# ML_HUB_Frontend
->>>>>>> 1b25a921262378fe354b50a6c45a32786d252d06
+# ML_HUB_API_For_Insurance Premium Prediction
+>>>>>>> URL and Endpoints for Insurance Premium Prediction
