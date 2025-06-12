@@ -64,10 +64,14 @@ body {
 /* Main */
 
 main{
-    height: 100vh;
+  margin: 50px;
     padding: 20px;
 }
 
+
+.ML-card-container {
+  margin-top: 50px;
+}
 
 /* Footer */
 
