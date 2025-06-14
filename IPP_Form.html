@@ -31,6 +31,7 @@
               required
               oninput="this.value = Math.round(this.value);"
               title="Please enter an age between 0 and 120"
+              placeholder="e.g., 25"
             />
           </div>
           <div class="mb-3">
@@ -44,6 +45,7 @@
               step="0.01"
               required
               title="Please enter a positive weight value"
+              placeholder="e.g., 65.5"
             />
           </div>
           <div class="mb-3">
@@ -58,6 +60,7 @@
               step="0.01"
               required
               title="Please enter a height between 0 and 2.5 meters"
+              placeholder="e.g., 1.75"
             />
           </div>
           <div class="mb-3">
@@ -71,69 +74,80 @@
               step="0.01"
               required
               title="Please enter a positive income value"
+              placeholder="e.g., 8.5"
             />
           </div>
           <div class="mb-3">
             <label class="form-label">Smoker</label>
             <select class="form-select" id="smoker" name="smoker" required>
-              <option value="">Select</option>
+              <option value="">Select Yes/No</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
           </div>
           <div class="mb-3">
             <label for="city" class="form-label">City</label>
-            <select class="form-select" id="city" name="city" required>
-              <option value="">Select</option>
-              <option value="Jaipur">Jaipur</option>
-              <option value="Chandigarh">Chandigarh</option>
-              <option value="Indore">Indore</option>
-              <option value="Lucknow">Lucknow</option>
-              <option value="Patna">Patna</option>
-              <option value="Ranchi">Ranchi</option>
-              <option value="Visakhapatnam">Visakhapatnam</option>
-              <option value="Coimbatore">Coimbatore</option>
-              <option value="Bhopal">Bhopal</option>
-              <option value="Nagpur">Nagpur</option>
-              <option value="Vadodara">Vadodara</option>
-              <option value="Surat">Surat</option>
-              <option value="Rajkot">Rajkot</option>
-              <option value="Jodhpur">Jodhpur</option>
-              <option value="Raipur">Raipur</option>
-              <option value="Amritsar">Amritsar</option>
-              <option value="Varanasi">Varanasi</option>
-              <option value="Agra">Agra</option>
-              <option value="Dehradun">Dehradun</option>
-              <option value="Mysore">Mysore</option>
-              <option value="Jabalpur">Jabalpur</option>
-              <option value="Guwahati">Guwahati</option>
-              <option value="Thiruvananthapuram">Thiruvananthapuram</option>
-              <option value="Ludhiana">Ludhiana</option>
-              <option value="Nashik">Nashik</option>
-              <option value="Allahabad">Allahabad</option>
-              <option value="Udaipur">Udaipur</option>
-              <option value="Aurangabad">Aurangabad</option>
-              <option value="Hubli">Hubli</option>
-              <option value="Belgaum">Belgaum</option>
-              <option value="Salem">Salem</option>
-              <option value="Vijayawada">Vijayawada</option>
-              <option value="Tiruchirappalli">Tiruchirappalli</option>
-              <option value="Bhavnagar">Bhavnagar</option>
-              <option value="Gwalior">Gwalior</option>
-              <option value="Dhanbad">Dhanbad</option>
-              <option value="Bareilly">Bareilly</option>
-              <option value="Aligarh">Aligarh</option>
-              <option value="Gaya">Gaya</option>
-              <option value="Kozhikode">Kozhikode</option>
-              <option value="Warangal">Warangal</option>
-              <option value="Kolhapur">Kolhapur</option>
-              <option value="Bilaspur">Bilaspur</option>
-              <option value="Jalandhar">Jalandhar</option>
-              <option value="Noida">Noida</option>
-              <option value="Guntur">Guntur</option>
-              <option value="Asansol">Asansol</option>
-              <option value="Siliguri">Siliguri</option>
-            </select>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              name="city"
+              list="cityList"
+              autocomplete="off"
+              required
+              placeholder="Type to search city (e.g., Mumbai)"
+              title="Please select a city from the list"
+            />
+            <datalist id="cityList">
+              <option value="Jaipur"></option>
+              <option value="Chandigarh"></option>
+              <option value="Indore"></option>
+              <option value="Lucknow"></option>
+              <option value="Patna"></option>
+              <option value="Ranchi"></option>
+              <option value="Visakhapatnam"></option>
+              <option value="Coimbatore"></option>
+              <option value="Bhopal"></option>
+              <option value="Nagpur"></option>
+              <option value="Vadodara"></option>
+              <option value="Surat"></option>
+              <option value="Rajkot"></option>
+              <option value="Jodhpur"></option>
+              <option value="Raipur"></option>
+              <option value="Amritsar"></option>
+              <option value="Varanasi"></option>
+              <option value="Agra"></option>
+              <option value="Dehradun"></option>
+              <option value="Mysore"></option>
+              <option value="Jabalpur"></option>
+              <option value="Guwahati"></option>
+              <option value="Thiruvananthapuram"></option>
+              <option value="Ludhiana"></option>
+              <option value="Nashik"></option>
+              <option value="Allahabad"></option>
+              <option value="Udaipur"></option>
+              <option value="Aurangabad"></option>
+              <option value="Hubli"></option>
+              <option value="Belgaum"></option>
+              <option value="Salem"></option>
+              <option value="Vijayawada"></option>
+              <option value="Tiruchirappalli"></option>
+              <option value="Bhavnagar"></option>
+              <option value="Gwalior"></option>
+              <option value="Dhanbad"></option>
+              <option value="Bareilly"></option>
+              <option value="Aligarh"></option>
+              <option value="Gaya"></option>
+              <option value="Kozhikode"></option>
+              <option value="Warangal"></option>
+              <option value="Kolhapur"></option>
+              <option value="Bilaspur"></option>
+              <option value="Jalandhar"></option>
+              <option value="Noida"></option>
+              <option value="Guntur"></option>
+              <option value="Asansol"></option>
+              <option value="Siliguri"></option>
+            </datalist>
           </div>
           <div class="mb-3">
             <label for="occupation" class="form-label">Occupation</label>
@@ -204,6 +218,27 @@
       const resultModal = new bootstrap.Modal(
         document.getElementById("resultModal")
       );
+
+      // Create a set of valid cities for quick lookup
+      const validCities = new Set(
+        Array.from(document.getElementById("cityList").options).map(
+          (opt) => opt.value
+        )
+      );
+
+      // Add validation for city input
+      document.getElementById("city").addEventListener("change", function (e) {
+        const cityInput = e.target;
+        const selectedCity = cityInput.value;
+
+        if (!validCities.has(selectedCity)) {
+          cityInput.setCustomValidity("Please select a city from the list");
+          // Clear the input if it's not in our dataset
+          cityInput.value = "";
+        } else {
+          cityInput.setCustomValidity("");
+        }
+      });
 
       document
         .getElementById("insuranceForm")
