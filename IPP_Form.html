@@ -19,14 +19,18 @@
         <h2 class="mb-4 text-center">Insurance Premium Prediction Form</h2>
         <form id="insuranceForm" class="mx-auto" style="max-width: 500px">
           <div class="mb-3">
-            <label for="age" class="form-label">Age</label>
+            <label for="age" class="form-label">Age (0-120)</label>
             <input
               type="number"
               class="form-control"
               id="age"
               name="age"
-              min="1"
+              min="0"
+              max="120"
+              step="1"
               required
+              oninput="this.value = Math.round(this.value);"
+              title="Please enter an age between 0 and 120"
             />
           </div>
           <div class="mb-3">
@@ -36,19 +40,24 @@
               class="form-control"
               id="weight"
               name="weight"
-              min="1"
+              min="0.01"
+              step="0.01"
               required
+              title="Please enter a positive weight value"
             />
           </div>
           <div class="mb-3">
-            <label for="height" class="form-label">Height (cm)</label>
+            <label for="height" class="form-label">Height (m)</label>
             <input
               type="number"
               class="form-control"
               id="height"
               name="height"
-              min="1"
+              min="0"
+              max="2.5"
+              step="0.01"
               required
+              title="Please enter a height between 0 and 2.5 meters"
             />
           </div>
           <div class="mb-3">
@@ -58,8 +67,10 @@
               class="form-control"
               id="income_lpa"
               name="income_lpa"
-              min="1"
+              min="0.01"
+              step="0.01"
               required
+              title="Please enter a positive income value"
             />
           </div>
           <div class="mb-3">
@@ -72,13 +83,57 @@
           </div>
           <div class="mb-3">
             <label for="city" class="form-label">City</label>
-            <input
-              type="text"
-              class="form-control"
-              id="city"
-              name="city"
-              required
-            />
+            <select class="form-select" id="city" name="city" required>
+              <option value="">Select</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Indore">Indore</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Patna">Patna</option>
+              <option value="Ranchi">Ranchi</option>
+              <option value="Visakhapatnam">Visakhapatnam</option>
+              <option value="Coimbatore">Coimbatore</option>
+              <option value="Bhopal">Bhopal</option>
+              <option value="Nagpur">Nagpur</option>
+              <option value="Vadodara">Vadodara</option>
+              <option value="Surat">Surat</option>
+              <option value="Rajkot">Rajkot</option>
+              <option value="Jodhpur">Jodhpur</option>
+              <option value="Raipur">Raipur</option>
+              <option value="Amritsar">Amritsar</option>
+              <option value="Varanasi">Varanasi</option>
+              <option value="Agra">Agra</option>
+              <option value="Dehradun">Dehradun</option>
+              <option value="Mysore">Mysore</option>
+              <option value="Jabalpur">Jabalpur</option>
+              <option value="Guwahati">Guwahati</option>
+              <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+              <option value="Ludhiana">Ludhiana</option>
+              <option value="Nashik">Nashik</option>
+              <option value="Allahabad">Allahabad</option>
+              <option value="Udaipur">Udaipur</option>
+              <option value="Aurangabad">Aurangabad</option>
+              <option value="Hubli">Hubli</option>
+              <option value="Belgaum">Belgaum</option>
+              <option value="Salem">Salem</option>
+              <option value="Vijayawada">Vijayawada</option>
+              <option value="Tiruchirappalli">Tiruchirappalli</option>
+              <option value="Bhavnagar">Bhavnagar</option>
+              <option value="Gwalior">Gwalior</option>
+              <option value="Dhanbad">Dhanbad</option>
+              <option value="Bareilly">Bareilly</option>
+              <option value="Aligarh">Aligarh</option>
+              <option value="Gaya">Gaya</option>
+              <option value="Kozhikode">Kozhikode</option>
+              <option value="Warangal">Warangal</option>
+              <option value="Kolhapur">Kolhapur</option>
+              <option value="Bilaspur">Bilaspur</option>
+              <option value="Jalandhar">Jalandhar</option>
+              <option value="Noida">Noida</option>
+              <option value="Guntur">Guntur</option>
+              <option value="Asansol">Asansol</option>
+              <option value="Siliguri">Siliguri</option>
+            </select>
           </div>
           <div class="mb-3">
             <label for="occupation" class="form-label">Occupation</label>
@@ -102,6 +157,40 @@
         </form>
       </div>
     </main>
+    <!-- Result Modal -->
+    <div
+      class="modal fade"
+      id="resultModal"
+      tabindex="-1"
+      aria-labelledby="resultModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resultModalLabel">
+              Prediction Results
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="modalContent"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer></footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
@@ -110,5 +199,111 @@
     ></script>
     <script src="scripts/navbar.js"></script>
     <script src="scripts/footer.js"></script>
+    <script>
+      // Initialize the modal
+      const resultModal = new bootstrap.Modal(
+        document.getElementById("resultModal")
+      );
+
+      document
+        .getElementById("insuranceForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = {
+            age: Number(form.age.value),
+            weight: Number(form.weight.value),
+            height: Number(form.height.value),
+            income_lpa: Number(form.income_lpa.value),
+            smoker: form.smoker.value === "true",
+            city: form.city.value,
+            occupation: form.occupation.value,
+          };
+
+          try {
+            const response = await fetch("http://127.0.0.1:8000/predict", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+
+            if (!response.ok) throw new Error("Network response was not ok");
+            const result = await response.json();
+            const prediction = result.response;
+
+            // Define category colors
+            const categoryColors = {
+              High: "#dc3545", // Bootstrap danger
+              Medium: "#ffc107", // Bootstrap warning
+              Low: "#198754", // Bootstrap success
+            };
+
+            // Update modal content
+            document.getElementById("modalContent").innerHTML = `
+              <div class="text-center">
+                <div class="mb-3">
+                  <span class="text-success" style="font-size: 2.5rem;">
+                    <i class="bi bi-check-circle-fill"></i>
+                  </span>
+                </div>
+                
+                <div class="mb-4">
+                  <h5>Predicted Category</h5>
+                  <span class="badge fs-5 px-4 py-2" 
+                        style="background-color: ${
+                          categoryColors[prediction.predicted_category]
+                        }">
+                    ${prediction.predicted_category}
+                  </span>
+                  <div class="mt-2 text-muted">
+                    Confidence: ${(prediction.confidence * 100).toFixed(1)}%
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <h5 class="mb-3">Probability Distribution</h5>
+                  <div class="px-3">
+                    ${Object.entries(prediction.class_probabilities)
+                      .map(
+                        ([category, prob]) => `
+                      <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span>${category}</span>
+                          <span>${(prob * 100).toFixed(1)}%</span>
+                        </div>
+                        <div class="progress" style="height: 1.5rem;">
+                          <div class="progress-bar" 
+                               role="progressbar" 
+                               style="width: ${
+                                 prob * 100
+                               }%; background-color: ${
+                          categoryColors[category]
+                        }"
+                               aria-valuenow="${prob * 100}" 
+                               aria-valuemin="0" 
+                               aria-valuemax="100">
+                          </div>
+                        </div>
+                      </div>
+                    `
+                      )
+                      .join("")}
+                  </div>
+                </div>
+              </div>
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+            `;
+
+            // Show the modal
+            resultModal.show();
+          } catch (error) {
+            document.getElementById("modalContent").innerHTML = `
+              <div class="alert alert-danger">
+                Error: ${error.message}
+              </div>`;
+            resultModal.show();
+          }
+        });
+    </script>
   </body>
 </html>
